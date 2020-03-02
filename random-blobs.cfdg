@@ -1,0 +1,25 @@
+n = 10
+
+startshape grid(n)
+
+
+path c {
+    MOVETO(0, -1)
+    ARCTO(1, 0, 1, CF::ArcCW)
+    STROKE(0.2, CF::RoundCap)[]
+}
+
+shape cell {
+    c[]
+    c[flip 45]
+}
+
+shape row(natural inc) {
+    if (randint(2)) cell[] else cell[flip 90]
+    if (inc) row(inc--1)[x 2]
+}
+
+shape grid(natural inc) {
+    row(n)[]
+    if (inc) grid(inc--1)[y 2] 
+}

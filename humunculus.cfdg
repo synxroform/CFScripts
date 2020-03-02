@@ -1,0 +1,34 @@
+n = 50
+CF::MinimumSize = 20
+startshape s3
+
+
+shape s3 {
+    s2(n, -1)[x -0.5]
+    s2(n, -1)[x 0.5]
+    s2(n, 1)[[ r 180 s 2.4 1 z 1 y -0.15]]
+    s4[z 100 s 0.5 1.5 y 2.8]
+
+}
+
+shape s4 {
+    s2(n, -1)[[flip -45]]
+    s2(n, 1)[[flip 45]]
+}
+
+shape s2(natural i, number nz) {
+    k = 1/n
+    if (i > 43) c1[] else c2[]
+    if (i) s2(i--1, nz)[y -0.2 s (k + k * i) z nz]
+}
+
+shape c1 {
+    transform [s 1 0.5] {
+        CIRCLE[]
+        CIRCLE[s 0.8 b 1]
+    }
+}
+
+shape c2 {
+    CIRCLE[s 0.9 0.5]
+}

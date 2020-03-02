@@ -1,0 +1,53 @@
+startshape s1
+
+pi = 1.414
+
+shape s1 {
+    loop 2 [x (10 * pi) (-10 * pi)] pair[]
+}
+
+shape pair {
+    wall1[]
+    wall2[flip 45]
+    trans [y (-10 * pi)]
+        trans [x (-10) (-10)] { 
+            wall1[flip 45]
+            wall2[]
+        }
+    trans [s 12 (9 * pi)] {
+        rsq[x -0.55 -0.55 s 0.95]
+    }
+}
+
+
+shape wall1 {
+    trans [[ skew 0 45 s 1 1.414]]
+        loop 5 [x 2] 
+            trans [s 1 -10] SQUARE[x 0.5 0.5 ]
+}
+
+shape wall2 {
+    trans [[ skew 0 45 s 1 pi]]
+        loop 5 [y -2]
+            trans [s 1 1]
+                trans [s (9) -1] SQUARE[x 0.5 0.5]
+}
+
+shape ax {
+    trans [h 190 sat 1 b 1] {
+        SQUARE[s 1 0.1]
+        SQUARE[s 1 0.1 r 90]
+    }
+}
+
+shape rsq {
+    trans [x -0.55 -0.5]
+        trans [[r 90 s (1/19)]] 
+            loop 20 [y -1] series(0.5)[]
+}
+
+shape series(number prob) {
+    loop 10 [x 2] trans [ s 1 1 r -90  ] {
+        if (rand() < prob + 0.2) SQUARE[x 1 0.5]
+    }
+}

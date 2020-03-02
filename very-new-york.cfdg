@@ -1,0 +1,32 @@
+startshape City
+CF::MinimumSize = 0.1
+
+shape City 
+rule 95{
+    Street []
+    City [y 0.5 x 0.5 s 0.9 z -1]
+}
+rule 5 {
+    Street []
+}
+
+shape Street
+rule 90{
+    House []
+    Street [x 1]
+}
+rule 10 {
+    House []
+}
+
+shape House 
+rule 90 {
+    CIRCLE []
+    CIRCLE [size 0.9 brightness 1]
+    House [y 0.2]
+}
+rule 10 {
+    CIRCLE []
+    CIRCLE [size 0.5 brightness 1]
+
+}

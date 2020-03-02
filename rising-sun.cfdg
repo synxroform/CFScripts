@@ -1,0 +1,30 @@
+startshape s0
+
+CF::Impure = 1
+
+n1 = 15
+
+shape s0 {
+    loop 20 [s 0.9 r 10]
+        loop 4 [r 90]
+            loop i = (n1, 0, -1) [r (-90/n1)] 
+                si(0.0033 * i)[]
+}
+
+shape si (number rad) 
+rule {
+    CIRCLE[y 0.5 s rad]
+}
+rule {
+    CIRCLE[y 0.5 s rad]
+    CIRCLE[y 0.5 s (rad * 0.5) b 1]
+}
+
+
+
+shape ax {
+    trans [h 190 sat 1 b 1] {
+        SQUARE[s 1 0.1]
+        SQUARE[s 1 0.1 r 90]
+    }
+}

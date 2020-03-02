@@ -1,0 +1,21 @@
+startshape s2
+CF::MinimumSize = 7
+  
+shape s2 {
+    s1(q1)[]
+    s1(q2)[r 180 y 2.26]
+}
+    
+shape s1(shape q) {
+    q[]
+    s1(=)[[s 0.5 1 x 1 y 0.2]]
+    s1(=)[[s 0.5 1 x -1 y 0.2]]
+}
+
+shape q1 {
+    SQUARE[s 1 0.1]
+}
+
+shape q2 {
+    loop 2 [y 0.1] SQUARE[s 1 0.02]
+}
