@@ -1,0 +1,59 @@
+vector2 pol2car(ang, rad) = 
+    rad * cos(ang), rad * sin(ang)
+    
+startshape s0
+
+
+
+n = 3
+k = -20
+
+
+shape s0 {
+    loop 4 [x pol2car(70, 3) z -10]
+        loop 10 [x pol2car(k, 1.25)]
+            building(1 + randint(3))[]
+}
+
+
+shape building(natural rise) {
+    trans [skew 0 k] { 
+        house(rise, 1)[b 1 z -10]
+        house(rise, 0)[]
+    }
+    loop 10 [x pol2car(20, 0.2) z -1] {
+        trans [skew 0 k] {
+            house(rise, 1)[ b 1]
+            side(rise)[]
+        }
+    }
+    windows((rise))[skew 0 k]    
+}
+
+shape windows(natural rise) {
+    loop (rise) [y 1] SQUARE[x 0.5 0.5 s 0.3]
+
+}
+    
+path house(number rise, natural fill) {
+    LINETO(0, rise)
+    LINETO(0.5, rise+0.5)
+    LINETO(1, rise)
+    LINETO(1, 0)
+    CLOSEPOLY()
+    if (!fill) STROKE(0.1)[]
+}
+
+path side(number rise) {
+    MOVETO(1, 0)
+    LINETO(1, rise)
+    LINETO(0.5, rise+0.5)
+    STROKE(0.1, CF::IsoWidth + CF::RoundCap)[]
+}
+
+shape ax {
+    trans [h 190 sat 1 b 1] {
+        SQUARE[s 1 0.1]
+        SQUARE[s 1 0.1 r 90]
+    }
+}

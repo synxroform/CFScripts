@@ -1,0 +1,27 @@
+startshape s0
+
+
+shape s0 {
+    farm[]
+    loop 3 [y -2] farm[]
+}
+
+shape farm {
+    loop i = 10 [x 0.3 0.19 z -1] h1(mod(i+1, 2))[skew 0 -20]
+}
+
+shape h1(number br) {
+    house(0)[b br]
+    house(1)[]
+    SQUARE[s 0.2]
+}
+
+path house(natural p1) {
+    MOVETO(0, 1)
+    LINETO(1, 0)
+    LINETO(1, -1)
+    LINETO(-1, -1)
+    LINETO(-1, 0)
+    CLOSEPOLY()
+    if (p1) STROKE(0.1, CF::IsoWidth)[]
+}
