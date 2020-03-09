@@ -1,0 +1,23 @@
+startshape t0(40)
+CF::MinimumSize = 1
+
+
+shape t0(natural i) {
+    lg[]
+    if (i) {
+        if (!(3 - mod(i, 4))) { 
+            t0(i--1) [ r 30..40 s 0.9]
+            t0(i--1) [ r -20 s 0.5]
+        }
+        t0(i--1) [y 1 r -5 s 0.9]
+    }
+}
+
+shape lg 
+rule 70 {
+    SQUARE[y 0.5 s 0.5 1]
+}
+rule 30 {
+    SQUARE[y 0.5 s 0.5 1]
+    CIRCLE[y 0.5 s 0.2 b 1]
+}

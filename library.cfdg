@@ -1,0 +1,8 @@
+// polar to cartesian
+vector2 pol2car(ang, rad) = 
+    rad * cos(ang), rad * sin(ang)
+    
+// isometric to screen
+vector2 iso2scr(isox, isoy, tw, th) =
+    (isox - isoy) * tw, (isox + isoy) * th/2
+    

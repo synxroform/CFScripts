@@ -1,0 +1,20 @@
+import "library.cfdg"
+
+
+startshape s0
+
+shape s0 {
+    loop i=4 [y 2] s1(mod(i, 2) * 180)[]
+}
+
+shape s1(number k) {
+    loop i=100 [x 0.1 0 z -0.1] { 
+        if (i) c0[y sin(i*10+k)]
+        else loop 5 [s 0.8] c0[]
+    }
+}
+
+shape c0 {
+    CIRCLE[]
+    CIRCLE[s 0.9 b 1]
+}

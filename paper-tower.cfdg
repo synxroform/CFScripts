@@ -1,0 +1,29 @@
+startshape s0
+
+k = 1.1
+
+shape s0 {
+    loop i=50 [y -0.1 z -1] 
+        trans [s 1 0.5] {
+            sp(1, 0, 2, div(i, 4), mod(i, 8))[r 45]
+        }
+}
+
+shape sp(natural i, natural j, natural n, natural mx, natural br) {
+    
+    if (i < mx) {
+        trans [b 0] {
+            trans [s 1] {
+                SQUARE[]
+                SQUARE[s 0.9 b mod(br+(2*i), 8)]
+            }
+            if (mod(i, n) == (n-1)) {
+                if (mod(j, 2) == 1) {
+                    sp(i+1, j+1, n+1, mx, br)[r 90 x k]
+                }
+                else sp(i+1, j+1, n, mx, br)[r 90 x k]
+            }
+            else sp(i+1, j, n, mx, br)[x k]
+    }
+    }
+}

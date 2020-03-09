@@ -1,0 +1,15 @@
+startshape s0
+
+shape s0 {
+    loop 10 [y 1]
+        s1(50)[]
+}
+
+
+shape s1(natural n) {
+    if(n) {
+        SQUARE[x 0.5 s 1 0.1]
+        CIRCLE[s 0.3]
+        s1(n--1)[x 1 r (0..10 * if(mod(n, 2), 1, -1))]
+    }
+}
