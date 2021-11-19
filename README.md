@@ -1,6 +1,6 @@
 ## context-free
 
-One of the most incredible pieces of software I've found during 2000s.At those times it was 
+One of the most incredible pieces of software I've found during 2000s. At those times it was 
 inseparable from notion of computational design (along with VVVV and processing). 
 It allows you to generate vector images from context-free design grammars. It's a completely 
 different mindset from conventional imperative programming. It is the case when program 
