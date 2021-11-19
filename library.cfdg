@@ -2,7 +2,18 @@
 vector2 pol2car(ang, rad) = 
     rad * cos(ang), rad * sin(ang)
     
+    
 // isometric to screen
 vector2 iso2scr(isox, isoy, tw, th) =
     (isox - isoy) * tw, (isox + isoy) * th/2
+
+        
+// pseudorandom
+rnd(n) = let(k=sin(n) * 43758.5453123; k - floor(k))
+rng(n, k, m) = k + rnd(n) * m
+
+
+// pseudorandom sum
+rnd_sum(p, n) = rnd(p) + if(n == 0, 0, rnd_sum(p+1, n-1))
+rng_sum(p, n, k, m) = rng(p, k, m) + if(n == 0, 0, rng_sum(p+1, n-1, k, m))
     
